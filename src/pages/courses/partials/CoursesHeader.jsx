@@ -1,3 +1,4 @@
+
 function CoursesHeader({ cardsCount, cardsViewType, setCardsViewType }) {
 
   let isRowCardStyleChecked = {

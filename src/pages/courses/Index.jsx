@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import CoursesContainer from "../components/courses/CoursesContainer.jsx";
-import CoursesHeader from "../components/courses/CoursesHeader.jsx";
-import Pagination from "../components/Pagination.jsx";
-import Filters from "../components/filters/Filters.jsx";
+import CoursesContainer from "./partials/CoursesContainer.jsx";
+import CoursesHeader from "./partials/CoursesHeader.jsx";
+import Pagination from "../../components/Pagination.jsx";
+import Filters from "./partials/filters/Filters.jsx";
+import AppLayout from "../../layouts/AppLayout.jsx";
 
-function CoursesPage({ onCardClick }) {
+function Index() {
   const [closures, setClosures] = useState([]);
   const [checkboxesValues, setCheckboxesValues] = useState({
     category: [],
@@ -90,26 +91,27 @@ function CoursesPage({ onCardClick }) {
   const [cardsViewType, setCardsViewType] = useState('block')
 
   return (
-    <div className="content content-padding">
-      <div className="content__inner container">
-        <aside className="aside">
-          <h2 className="visually-hidden">Filters</h2>
-          <Filters onCheckboxChange={updateFilters} />
-        </aside>
-        <main className="courses">
-          <h2 className="visually-hidden">Courses</h2>
-          <CoursesHeader cardsCount={cardsCount} cardsViewType={cardsViewType} setCardsViewType={setCardsViewType} />
-          <CoursesContainer
-            closures={closures}
-            updateCardsCount={setCardsCount}
-            onCardClick={onCardClick}
-            cardsViewType={cardsViewType}
-          />
-          <Pagination links={["#", "#", "#", "#"]} />
-        </main>
+    <AppLayout bannerText={'All partials'}>
+      <div className="content content-padding">
+        <div className="content__inner container">
+          <aside className="aside">
+            <h2 className="visually-hidden">Filters</h2>
+            <Filters onCheckboxChange={updateFilters} />
+          </aside>
+          <main className="courses">
+            <h2 className="visually-hidden">Courses</h2>
+            <CoursesHeader cardsCount={cardsCount} cardsViewType={cardsViewType} setCardsViewType={setCardsViewType} />
+            <CoursesContainer
+              closures={closures}
+              updateCardsCount={setCardsCount}
+              cardsViewType={cardsViewType}
+            />
+            <Pagination links={["#", "#", "#", "#"]} />
+          </main>
+        </div>
       </div>
-    </div>
+    </AppLayout>
   );
 }
 
-export default CoursesPage;
+export default Index;

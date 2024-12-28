@@ -1,33 +1,26 @@
-import Socials from "./Socials.jsx";
-import Select from "./ui/Select.jsx";
-import Option from "./ui/Option.jsx";
-import RoundButton from "./ui/RoundButton.jsx";
-import DefaultButton from "./ui/DefaultButton.jsx";
+import Socials from "../../components/Socials.jsx";
+import Select from "../../components/ui/Select.jsx";
+import Option from "../../components/ui/Option.jsx";
+import RoundButton from "../../components/ui/RoundButton.jsx";
+import DefaultButton from "../../components/ui/DefaultButton.jsx";
+import { useContext } from "react";
+import CartContext from "../../contexts/CartContext.js";
+import { NavLink } from "react-router-dom";
 
 const navigationLinks = [
   {
-    href: '#',
-    name: 'Home',
-  },
-  {
-    href: '#',
+    href: '/',
     name: 'Courses',
   },
   {
-    href: '#',
-    name: 'Pages',
-  },
-  {
-    href: '#',
-    name: 'Shop',
-  },
-  {
-    href: '#',
-    name: 'Blog',
+    href: '/cart',
+    name: 'About',
   },
 ]
 
 function Header({ cartCount }) {
+  const cartContext = useContext(CartContext)
+
   return (
     <header className="header">
       <div className="header__contact contact content-padding">
@@ -48,7 +41,7 @@ function Header({ cartCount }) {
       <div className="header__controls controls content-padding">
         <div className="controls__inner container container_big">
           <div className="controls__first-part">
-            <a href="#" className="controls__logo-container">
+            <NavLink to="/" className="controls__logo-container">
               <img
                 className="controls__logo"
                 src="/images/logo.png"
@@ -57,14 +50,17 @@ function Header({ cartCount }) {
                 height="38"
                 loading="lazy"
               />
-            </a>
+            </NavLink>
             <nav className="controls__navigation navigation">
               <ul className="navigation__list">
                 {navigationLinks.map((link, index) => (
                   <li className="navigation__item" key={index}>
-                    <a className="navigation__link link" href={link.href}>
-                      {link.name}
-                    </a>
+                    <NavLink
+                      className="navigation__link link"
+                      to={link.href}
+                    >
+                      { link.name }
+                    </NavLink>
                   </li>
                 ))}
               </ul>
@@ -108,7 +104,7 @@ function Header({ cartCount }) {
                   loading="lazy"
                 />
               </RoundButton>
-              <RoundButton chips={cartCount} href='#'>
+              <RoundButton chips={cartContext.cart.length} href='/cart'>
                 <img
                   className="controls__link-image"
                   src="/images/cart.svg"

@@ -570,7 +570,7 @@
         align-items: center;
     }
 
-    /* courses */
+    /* partials */
     .courses__header {
         display: flex;
         justify-content: space-between;
@@ -639,10 +639,18 @@
     }
 
     .card {
+        position: relative;
         padding: 26px 26px 33px;
         border: var(--border);
         border-radius: var(--border-radius);
-    } 
+    }
+
+    .card__link {
+        inset: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 
     .card__image {
         width: 100%;
@@ -711,6 +719,10 @@
         font-size: 20px;
         font-weight: 700;
         color: var(--color-dark-lighter);
+    }
+
+    .card__button {
+        position: relative;
     }
 
     .courses__pagination {
@@ -895,6 +907,42 @@
     .rules-links__link {
         text-decoration: none;
         color: inherit;
+    }
+
+    /* single course page */
+    .single-course__grid {
+        padding-block: 50px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 20px;
+    }
+
+    .single-course__image-container {
+        grid-column: span 2;
+    }
+
+    .single-course__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .single-course__info {
+        grid-column: span 3;
+        padding-block: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        font-size: 20px;
+    }
+
+    .single-course__button {
+        margin-top: auto;
+    }
+
+    /* cart */
+    .cart {
+        padding-bottom: 40px;
     }
 }
 

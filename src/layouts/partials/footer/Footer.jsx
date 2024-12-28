@@ -1,4 +1,4 @@
-import Socials from "../Socials.jsx";
+import Socials from "../../../components/Socials.jsx";
 import FooterBlock from "./FooterBlock.jsx";
 
 function Footer() {
@@ -153,7 +153,6 @@ function Footer() {
           </ul>
         </div>
       </div>
-      ;
     </footer>
   );
 }

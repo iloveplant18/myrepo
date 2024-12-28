@@ -91,11 +91,11 @@ function Filters({onCheckboxChange}) {
               }
               key={index}
             >
-                    <span className="filter__caption filter__caption_row">
-                      {starArray.map((isAlternative, index) => (
-                        <Star isAlternative={isAlternative} key={index} />
-                      ))}
-                    </span>
+              <span className="filter__caption filter__caption_row">
+                {starArray.map((isAlternative, index) => (
+                  <Star isAlternative={isAlternative} key={index} />
+                ))}
+              </span>
             </FiltersCheckbox>
           );
         })}
